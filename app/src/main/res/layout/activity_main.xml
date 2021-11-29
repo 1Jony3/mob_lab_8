@@ -76,52 +76,49 @@
             android:fontFamily="sans-serif-condensed" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="data of publication"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAuthor" />
-
-    <DatePicker
-        android:id="@+id/datePicker"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
         android:layout_marginStart="60dp"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"
+        android:hint="dd/mm/yyyy"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAuthor"
+        app:counterEnabled = "true"
+        app:errorEnabled="true"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/date"
+            android:inputType="date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:fontFamily="sans-serif-condensed" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TableRow android:gravity="center_horizontal">
-
         <Button
             android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:onClick="ADD"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
             android:text="add"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+            app:layout_constraintTop_toBottomOf="@+id/textDate" />
 
         <Button
-            android:id="@+id/save"
+            android:id="@+id/update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:onClick="Save"
-            android:text="save"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:text="update"
             app:layout_constraintLeft_toRightOf="@+id/add"
             app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
@@ -130,12 +127,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:onClick="Delete"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
             android:text="delete"
             app:layout_constraintLeft_toRightOf="@+id/save"
             app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+
+        <Button
+            android:id="@+id/read"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="2dp"
+            android:text=">"
+            app:layout_constraintLeft_toRightOf="@+id/save"
+            app:layout_constraintTop_toBottomOf="@+id/delete" />
     </TableRow>
 
 </TableLayout>
