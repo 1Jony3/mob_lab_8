@@ -56,11 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 contentValues.put(DBHelper.KEY_NAME, name);
                 contentValues.put(DBHelper.KEY_AUTHOR, author);
                 contentValues.put(DBHelper.KEY_Date, date);
-                database.insert(DBHelper.TABLE_PERSONS, null,
-                        contentValues);
+                database.insert(DBHelper.TABLE_Books, null, contentValues);
                 break;
             case R.id.read:
-                Cursor cursor = database.query(DBHelper.TABLE_PERSONS, null,
+                Cursor cursor = database.query(DBHelper.TABLE_Books, null,
                         null, null,
                         null, null, null); // все поля без сортировки и группировки
                 if (cursor.moveToFirst())
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.d("mLog", "ID =" + cursor.getInt(idIndex) +
                                 ", name = " + cursor.getString(nameIndex) +
                                 ", author = " + cursor.getString(authorIndex) +
-                                ", author = " + cursor.getString(dateIndex));
+                                ", date = " + cursor.getString(dateIndex));
                     } while (cursor.moveToNext());
                 } else
                     Log.d("mLog", "0 rows");
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     break;
                 }
-                int delCount = database.delete(DBHelper.TABLE_PERSONS,
+                int delCount = database.delete(DBHelper.TABLE_Books,
                         DBHelper.KEY_ID + "= " + ID, null);
                 Log.d("mLog", "Удалено строк = " + delCount);
             case R.id.update:
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 contentValues.put(DBHelper.KEY_NAME, name);
                 contentValues.put(DBHelper.KEY_AUTHOR, author);
                 contentValues.put(DBHelper.KEY_Date, date);
-                int updCount = database.update(DBHelper.TABLE_PERSONS,
+                int updCount = database.update(DBHelper.TABLE_Books,
                         contentValues, DBHelper.KEY_ID + "= ?", new String[] {ID});
                 Log.d("mLog", "Обновлено строк = " + updCount);
         }

@@ -10,7 +10,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "myBase";
-    public static final String TABLE_PERSONS = "books";
+    public static final String TABLE_Books = "books";
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "name";
     public static final String KEY_AUTHOR = "author";
@@ -22,12 +22,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_PERSONS + "(" + KEY_ID + "integer primary key," +
-                KEY_NAME + "text," + KEY_AUTHOR + "text," + KEY_Date + "text" + ")");
+        db.execSQL("create table " + TABLE_Books + "(" + KEY_ID + " integer primary key," +
+                KEY_NAME + " text," + KEY_AUTHOR + " text," + KEY_Date + " text" + ")");
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists " + TABLE_PERSONS);
+        db.execSQL("drop table if exists " + TABLE_Books);
         onCreate(db);
     }
 }
